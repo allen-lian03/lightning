@@ -1,0 +1,17 @@
+### get api key
+GET http://localhost:5000/api/v1/api-keys
+
+### get 400 error
+GET http://localhost:5000/api/v1/api-keys?type=1
+
+### get 500 error
+GET http://localhost:5000/api/v1/api-keys?type=2
+
+
+### create api key 
+POST http://localhost:5000/api/v1/api-keys
+Content-Type: application/json
+
+{
+    "client": "primeiro"
+}
