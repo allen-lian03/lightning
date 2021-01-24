@@ -30,6 +30,7 @@ namespace Lightning.WebApi.Controllers
         [HttpGet, Route("")]
         public async Task<ActionResult<string>> GenerateApiKey([FromQuery] int type = 0)
         {
+            _logger.LogInformation("Get Generate Api Key Query");
             switch (type)
             {
                 case 1:
@@ -57,6 +58,7 @@ namespace Lightning.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<string> GenerateApiKey([FromBody]CreateApiKeyCommand command)
         {
+            _logger.LogWarning("Post Generate Api Key");
             return Created(Guid.NewGuid().ToString(), "save successfully");
         }
     }

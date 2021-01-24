@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Diagnostics;
 
 using System;
 using System.Text;
 using System.Text.Json;
+using Serilog;
 
 using Lightning.Core.Filters;
 
@@ -57,6 +59,8 @@ namespace Lightning.WebApi
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
+
+            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
 
